@@ -21,7 +21,42 @@ conn = mysql.connector.connect(**db_config)
 # Read CSV data into a Pandas DataFrame
 df = pd.read_csv('finalOutput.csv')  # Replace 'your_data.csv' with your CSV file path
 print(df.columns)
+
+#account number is 12 digit not more than that----------------
+def minimumLengthCheck(self,df,column, length):
+    print('Values below the min length :')
+    for i in df.collect():
+        if len(i[column]) <= length:
+            print(i[column])
+    return df    
+
+#contact number is not more than 10 digits-----------------------
+ def minimumLengthCheck(self,df,column, length):
+    print('Values below the min length :')
+    for i in df.collect():
+        if len(i[column]) <= length:
+            print(i[column])
+    return df
+
+#transactiontype should be credit or debit
+def transactionTypeCheck(self,df,column):
+    listOfTrTypes = ['credit','debit']
+    print('Transactions that are not credit and debit types')
+    for i in df.collect():
+        if i[column] not in listOfTrTypes:
+            print(i[column])
+    return df
+
  
+
+#dob should be
+def dobFormatCheck(self,df,column):
+    pattern = r'^\d{4}/\d{2}/\d{2}$'
+    print('Dates that dont follow the correct standard')
+    for i in df.collect():
+        if len(re.match(pattern,i[column]).group())>0:
+            print(i[column])
+    return df
 
 # Define a function to insert data into the MySQL database
 def insert_data(row):
