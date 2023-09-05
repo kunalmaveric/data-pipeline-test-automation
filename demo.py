@@ -12,7 +12,7 @@ def readDataFile(csv_file_path):
 def writeToTarget(sourceData):
       #Write final filtered output to target 
       duplicate_df = sourceData.toPandas()
-      output_csv_path = "finalOutput.csv"
+      output_csv_path = "Staging/finalOutput.csv"
       duplicate_df.to_csv(output_csv_path, index=False)
 
 if __name__ == '__main__':
@@ -20,7 +20,7 @@ if __name__ == '__main__':
       spark = SparkSession.builder.appName("ReadCSV").getOrCreate()
 
       #Reading source data
-      sourceData = readDataFile('dummyData_new.csv')
+      sourceData = readDataFile('Landing/dummyData_new.csv')
 
       #Object creation for Pre inserting data to staging layer
       s1 = PreValidation()
@@ -28,7 +28,7 @@ if __name__ == '__main__':
       updatedSourcedata1 = s1.duplicates(spark,updatedSourceData)
       # print(updatedSourcedata1.show(3))
       writeToTarget(updatedSourcedata1)
-      targetData = readDataFile('finalOutput.csv')
+      targetData = readDataFile('Staging/finalOutput.csv')
 
       #Object creation for Post 
       s2 = PostValidation()
