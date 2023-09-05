@@ -44,7 +44,11 @@ except mysql.connector.Error as err:
 df = pd.read_csv('Staging/finalOutput.csv')  # Replace 'your_data.csv' with your CSV file path
 print(df.columns)
 
+<<<<<<< HEAD
  #account number is 12 digit not more than that----------------
+=======
+#account number is 12 digit not more than that----------------
+>>>>>>> 0b35a87b999ed46e5cf578c27235d6034ed787ca
 def minimumLengthCheck(self,df,column, length):
     print('Values below the min length :')
     for i in df.collect():
@@ -53,7 +57,11 @@ def minimumLengthCheck(self,df,column, length):
     return df    
 
 #contact number is not more than 10 digits-----------------------
+<<<<<<< HEAD
 def minimumLengthCheck(self,df,column, length):
+=======
+ def minimumLengthCheck(self,df,column, length):
+>>>>>>> 0b35a87b999ed46e5cf578c27235d6034ed787ca
     print('Values below the min length :')
     for i in df.collect():
         if len(i[column]) <= length:
