@@ -3,14 +3,6 @@ import mysql.connector
 import configparser
 import re
 
-# Define the MySQL database connection parameters
-# db_config = {
-#     'host': 'localhost',      # Your MySQL server host
-#     'user': 'root',       # Your MySQL username
-#     'password': '1234',   # Your MySQL password
-#     'database': 'db',    # Your MySQL database name
-# }
-
 
 
 config = configparser.ConfigParser()
