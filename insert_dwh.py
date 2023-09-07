@@ -3,23 +3,17 @@ import mysql.connector
 import configparser
 import re
 
-
-
 config = configparser.ConfigParser()
 config.read('config.ini')
 
-
 # Create a MySQL connection
-
 db_host = config['database']['host']
 db_port = config['database']['port']
 db_user = config['database']['user']
 db_password = config['database']['password']
 db_name = config['database']['database_name']
 
-
 # Create a MySQL connection
-
 try:
     conn = mysql.connector.connect(
         host=db_host,
@@ -36,11 +30,7 @@ except mysql.connector.Error as err:
 df = pd.read_csv('Staging/finalOutput.csv')  # Replace 'your_data.csv' with your CSV file path
 print(df.columns)
 
-<<<<<<< HEAD
- #account number is 12 digit not more than that----------------
-=======
-#account number is 12 digit not more than that----------------
->>>>>>> 0b35a87b999ed46e5cf578c27235d6034ed787ca
+# account number is 12 digit not more than that
 def minimumLengthCheck(self,df,column, length):
     print('Values below the min length :')
     for i in df.collect():
@@ -48,19 +38,15 @@ def minimumLengthCheck(self,df,column, length):
             print(i[column])
     return df    
 
-#contact number is not more than 10 digits-----------------------
-<<<<<<< HEAD
+# contact number is not more than 10 digits
 def minimumLengthCheck(self,df,column, length):
-=======
- def minimumLengthCheck(self,df,column, length):
->>>>>>> 0b35a87b999ed46e5cf578c27235d6034ed787ca
     print('Values below the min length :')
     for i in df.collect():
         if len(i[column]) <= length:
             print(i[column])
     return df
 
-#transactiontype should be credit or debit
+# transactiontype should be credit or debit
 def transactionTypeCheck(self,df,column):
     listOfTrTypes = ['credit','debit']
     print('Transactions that are not credit and debit types')
@@ -69,9 +55,7 @@ def transactionTypeCheck(self,df,column):
             print(i[column])
     return df
 
- 
-
-#dob should be
+# dob should be yyyy-mm-dd
 def dobFormatCheck(self,df,column):
     pattern = r'^\d{4}/\d{2}/\d{2}$'
     print('Dates that dont follow the correct standard')
@@ -104,12 +88,8 @@ def insert_data(row):
     conn.commit()
     cursor.close()
 
- 
-
 # Apply the insert_data function to each row in the DataFrame
 df.apply(insert_data, axis=1)
-
- 
 
 # Close the MySQL connection
 conn.close()
